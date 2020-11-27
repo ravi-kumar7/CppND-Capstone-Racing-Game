@@ -6,10 +6,7 @@ Game::Game(std::size_t screen_width, std::size_t screen_height)
     : 
       player(screen_width,screen_height,screen_width/2,screen_height+100, 50, 97),
       track(420,640),
-      _traffic_generator(screen_width,screen_height),
-      engine(dev()),
-      random_w(0, static_cast<int>(screen_width)),
-      random_h(0, static_cast<int>(screen_height)) {
+      _traffic_generator(screen_width,screen_height, 2000) {
 }
 
 void Game::Run(Controller const &controller, Renderer &renderer,
@@ -38,7 +35,9 @@ void Game::Run(Controller const &controller, Renderer &renderer,
 
     // After every second, update the window title.
     if (frame_end - title_timestamp >= 1000) {
-      renderer.UpdateWindowTitle(score, frame_count);
+      if(player.alive)
+      score++;
+      renderer.UpdateWindowTitle(score, frame_count,!player.alive);
       frame_count = 0;
       title_timestamp = frame_end;
     }
@@ -52,17 +51,6 @@ void Game::Run(Controller const &controller, Renderer &renderer,
   }
 }
 
-void Game::PlaceEnemy() {
-  int x, y;
-
-  while (true) {
-    x = random_w(engine);
-    y = random_h(engine);
-    // Check that the location is not occupied by a snake item before placing
-    // food.
-    break;
-  }
-}
 
 void Game::Update() {
   if (!player.alive) return;

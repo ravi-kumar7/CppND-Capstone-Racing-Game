@@ -14,7 +14,7 @@ class Renderer {
   ~Renderer();
 
   void Render(Player const player, Track const track, std::deque<std::shared_ptr<Vehicle>> &vehicles);
-  void UpdateWindowTitle(int score, int fps);
+  void UpdateWindowTitle(int score, int fps,bool game_over);
 
  private:
   SDL_Window *sdl_window;

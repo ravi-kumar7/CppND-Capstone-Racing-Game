@@ -4,7 +4,7 @@
 Vehicle::Vehicle(VehicleType type,int screen_width, int screen_height, int x, int y, int width, int height)
 : GameObject(ObjectType::vehicle,screen_width, screen_height, x,y, width, height){
 _type = type;
-speed = 1.0f; 
+speed = 2.0f; 
 
 }
 

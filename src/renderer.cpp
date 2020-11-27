@@ -13,7 +13,7 @@ Renderer::Renderer(const std::size_t screen_width,
   }
 
   // Create Window
-  sdl_window = SDL_CreateWindow("Snake Game", SDL_WINDOWPOS_CENTERED,
+  sdl_window = SDL_CreateWindow("Road Racing Game", SDL_WINDOWPOS_CENTERED,
                                 SDL_WINDOWPOS_CENTERED, screen_width,
                                 screen_height, SDL_WINDOW_SHOWN);
 
@@ -106,7 +106,9 @@ void Renderer::Render(Player const player, Track const track,std::deque<std::sha
   SDL_RenderPresent(sdl_renderer);
 }
 
-void Renderer::UpdateWindowTitle(int score, int fps) {
+void Renderer::UpdateWindowTitle(int score, int fps, bool game_over) {
   std::string title{"Score: " + std::to_string(score) + " FPS: " + std::to_string(fps)};
+  if(game_over)
+  title = "Game Over FPS: " + std::to_string(fps);
   SDL_SetWindowTitle(sdl_window, title.c_str());
 }
