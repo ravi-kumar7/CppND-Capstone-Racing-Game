@@ -32,6 +32,8 @@ Renderer::Renderer(const std::size_t screen_width,
     std::cerr << "Renderer could not be created.\n";
     std::cerr << "SDL_Error: " << SDL_GetError() << "\n";
   }
+
+  //Surface Initialization
   sdl_surface = SDL_LoadBMP("../img/bg.bmp");
   sdl_player_surface = SDL_LoadBMP("../img/Black_viper.bmp");
   sdl_truck_surface = SDL_LoadBMP("../img/Mini_truck.bmp");
@@ -44,6 +46,7 @@ Renderer::Renderer(const std::size_t screen_width,
   sdl_track_surface = SDL_LoadBMP("../img/road.bmp");
   sdl_gameover_surface = SDL_LoadBMP("../img/gameover.bmp");
 
+  //Texture initialization
   sdl_texture = SDL_CreateTextureFromSurface(sdl_renderer, sdl_surface);
   sdl_player_texture = SDL_CreateTextureFromSurface(sdl_renderer, sdl_player_surface);
   sdl_truck_texture = SDL_CreateTextureFromSurface(sdl_renderer, sdl_truck_surface);
@@ -63,7 +66,7 @@ Renderer::~Renderer()
   SDL_Quit();
 }
 
-void Renderer::Render(Player const player, Track const track, std::deque<std::shared_ptr<Vehicle>> &vehicles)
+void Renderer::Render(Player const player, Track const track, std::deque<std::shared_ptr<Vehicle>> const &vehicles)
 {
   SDL_Rect block;
   // Clear screen
@@ -115,17 +118,14 @@ void Renderer::Render(Player const player, Track const track, std::deque<std::sh
       break;
     }
   }
+  //Render Player
+  block.h = player.getHeight();
+  block.w = player.getWidth();
+  block.x = static_cast<int>(player.pos_x);
+  block.y = static_cast<int>(player.pos_y);
+  SDL_RenderCopy(sdl_renderer, sdl_player_texture, NULL, &block);
 
-  if (player.alive)
-  {
-    //Render Player
-    block.h = player.getHeight();
-    block.w = player.getWidth();
-    block.x = static_cast<int>(player.pos_x);
-    block.y = static_cast<int>(player.pos_y);
-    SDL_RenderCopy(sdl_renderer, sdl_player_texture, NULL, &block);
-  }
-  else
+  if (!player.alive)
   {
     //Render Game Over Banner
     block.h = 60;

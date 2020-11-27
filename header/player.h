@@ -4,13 +4,13 @@
 #include <vector>
 #include "gameobject.h"
 
-class Player:public GameObject {
- public:
-
-  Player(int screen_width, int screen_height,int x, int y, int width, int height);
+class Player : public GameObject
+{
+public:
+  Player(int screen_width, int screen_height, int x, int y, int width, int height);
   bool alive{true};
 
- private:
+private:
   void UpdatePosition() override;
 };
 

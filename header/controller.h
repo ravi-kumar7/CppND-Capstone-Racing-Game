@@ -3,8 +3,9 @@
 
 #include "player.h"
 
-class Controller {
- public:
+class Controller
+{
+public:
   void HandleInput(bool &running, Player &player) const;
 };
 
