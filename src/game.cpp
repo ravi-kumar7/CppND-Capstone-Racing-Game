@@ -4,7 +4,7 @@
 
 Game::Game(std::size_t screen_width, std::size_t screen_height)
     : 
-      player(screen_width,screen_height,screen_width/2,screen_height+100, 50, 97),
+      player(screen_width,screen_height,screen_width/2-20,screen_height+100, 40, 87),
       track(420,640),
       _traffic_generator(screen_width,screen_height, 2000) {
 }
@@ -37,7 +37,7 @@ void Game::Run(Controller const &controller, Renderer &renderer,
     if (frame_end - title_timestamp >= 1000) {
       if(player.alive)
       score++;
-      renderer.UpdateWindowTitle(score, frame_count,!player.alive);
+      renderer.UpdateWindowTitle(score, frame_count);
       frame_count = 0;
       title_timestamp = frame_end;
     }

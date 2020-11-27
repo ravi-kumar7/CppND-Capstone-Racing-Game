@@ -14,7 +14,7 @@ class Renderer {
   ~Renderer();
 
   void Render(Player const player, Track const track, std::deque<std::shared_ptr<Vehicle>> &vehicles);
-  void UpdateWindowTitle(int score, int fps,bool game_over);
+  void UpdateWindowTitle(int score, int fps);
 
  private:
   SDL_Window *sdl_window;
@@ -27,8 +27,12 @@ class Renderer {
   SDL_Surface *sdl_van_surface;
   SDL_Surface *sdl_taxi_surface;
   SDL_Surface *sdl_car_surface;
+  SDL_Surface *sdl_ambulance_surface;
+  SDL_Surface *sdl_audi_surface;
+  SDL_Surface *sdl_bigtruck_surface;
   SDL_Surface *sdl_track_surface;
-  
+  SDL_Surface *sdl_gameover_surface;
+
   SDL_Texture *sdl_texture;
   SDL_Texture *sdl_player_texture;
   SDL_Texture *sdl_player_dead_texture;
@@ -36,7 +40,11 @@ class Renderer {
   SDL_Texture *sdl_van_texture;
   SDL_Texture *sdl_car_texture;
   SDL_Texture *sdl_taxi_texture;
+  SDL_Texture *sdl_ambulance_texture;
+  SDL_Texture *sdl_audi_texture;
+  SDL_Texture *sdl_bigtruck_texture;
   SDL_Texture *sdl_track_texture;
+  SDL_Texture *sdl_gameover_texture;
 
   const std::size_t screen_width;
   const std::size_t screen_height;

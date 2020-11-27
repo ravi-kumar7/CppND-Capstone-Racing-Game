@@ -24,6 +24,7 @@ class TrafficGenerator{
         bool loaded = false;
         std::chrono::time_point<std::chrono::system_clock> _lastVehicleTime;
         long _delay;
+        int prevVehicleIndex=-1;
 
 };
 

@@ -9,7 +9,10 @@ class Vehicle: public GameObject{
         Truck,
         Van,
         Taxi,
-        Car
+        Car,
+        Ambulance,
+        Audi,
+        BigTruck
     };
     Vehicle(VehicleType type,int screen_width, int screen_height, int x, int y, int width, int height);
     VehicleType getVehicleType(){return _type;};

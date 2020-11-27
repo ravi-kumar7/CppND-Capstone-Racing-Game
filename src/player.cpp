@@ -5,7 +5,7 @@
 
  Player:: Player(int screen_width, int screen_height, int x, int y, int width, int height) : GameObject(ObjectType::player,screen_width, screen_height, x,y, width, height)
  {  
-  speed =10.0f;
+  speed =15.0f;
  }
 
 
